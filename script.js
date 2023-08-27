@@ -1,13 +1,34 @@
 const table = document.querySelector('.calculations-table');
+const display = document.querySelector('.display')
 let number1 = 1;
 let number2 = 6;
 let operator = "*";
 let answer = 0;
  
-/*table.addEventListener()
-{
-
-}*/
+table.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        const buttonText = event.target.textContent;
+        if( buttonText === '1' || buttonText === '2'|| 
+            buttonText === '3' || buttonText === '4' ||
+            buttonText === '5' || buttonText === '6' ||
+            buttonText === '7' || buttonText === '8' ||
+            buttonText === '9')
+        {
+            display.textContent = display.textContent + buttonText;
+        }
+        else if(buttonText === 'CLEAR')
+        {
+            display.textContent = '';
+        }
+        else if(buttonText === 'DELETE')
+        {
+            const currentText = display.textContent;
+            if (currentText.length > 0) {
+                display.textContent = currentText.slice(0, -1);
+            }
+        }
+    }
+});
 
 function operate(number1, operator, number2)
 {
@@ -42,5 +63,3 @@ function divide(number1, number2)
 {
     return answer = number1 / number2;
 }
-
-console.log(operate(number1, operator, number2))
